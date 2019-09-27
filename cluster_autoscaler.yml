@@ -134,8 +134,12 @@ spec:
             - --v=4
             - --stderrthreshold=info
             - --cloud-provider=aws
+            - --skip-nodes-with-system-pods=false
             - --skip-nodes-with-local-storage=false
-            - --nodes=1:2:eksctl-wordpress-eks-nodegroup-wodpress-workers-NodeGroup-8F9MK1ZMIRBI
+            - --scale-down-delay-after-add=2m
+            - --scale-down-delay-after-delete=2m
+            - --scale-down-delay-after-failure=2m
+            - --nodes=1:3:eksctl-wordpress-eks-nodegroup-wodpress-workers-NodeGroup-8F9MK1ZMIRBI
           env:
             - name: AWS_REGION
               value: us-west-2

@@ -25,6 +25,7 @@ $ eksctl create cluster -f cluster.yaml
 7) Go to the public endpoint and finish up the installation with Site Name, Admin Name, Password etc
 
 ## 2) Setting up autoscaling
+#### Important gotchas: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md#common-notes-and-gotchas
 ### Based on the following tutorial: https://eksworkshop.com/scaling/
 1) Add metrics server to your cluster https://github.com/kubernetes-incubator/metrics-server
 
