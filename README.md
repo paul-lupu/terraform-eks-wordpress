@@ -1,5 +1,7 @@
 # terraform-eks-wordpress
-Building a wordpress instalation with terraform and eks in aws 
+## What does it do? 
+
+It builds an autoscaling EKS based kubernetes cluster serving wordpress.
 
 Maintained by Paul Lupu
 
