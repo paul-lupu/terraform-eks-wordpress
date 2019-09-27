@@ -3,7 +3,7 @@ kind: ClusterConfig
 
 metadata:
   name: wordpress-eks
-  version: 1.14
+  version: 1.13
   region: us-west-2
 
 nodeGroups:
