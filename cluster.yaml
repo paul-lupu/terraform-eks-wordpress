@@ -1,0 +1,11 @@
+apiVersion: eksctl.io/v1alpha4
+kind: ClusterConfig
+
+metadata:
+  name: wordpress-eks
+  region: us-west-2
+
+nodeGroups:
+  - name: wodpress-workers
+    instanceType: t2.medium
+    desiredCapacity: 1

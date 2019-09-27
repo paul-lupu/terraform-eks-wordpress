@@ -1,0 +1,72 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: null
+  generation: 1
+  labels:
+    app: wordpress
+    env: dev
+    ver: "1"
+  name: wordpress-dev
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      env: dev
+      ver: "1"
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: wordpress
+        env: dev
+        ver: "1"
+    spec:
+      containers:
+      - image: registry.hub.docker.com/library/wordpress:latest
+        env: 
+          - name: WORDPRESS_DB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: wordpress-env-config-map 
+                key: WORDPRESS_DB_USER
+          - name: WORDPRESS_DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: wordpress-env-config-map 
+                key: WORDPRESS_DB_HOST
+          - name: WORDPRESS_DB_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: wordpress-env-config-map 
+                key: WORDPRESS_DB_PASSWORD
+          - name: WORDPRESS_DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: wordpress-env-config-map 
+                key: WORDPRESS_DB_NAME
+        ports:
+          - containerPort: 80
+            name: http
+            protocol: TCP
+        imagePullPolicy: Always
+        name: wordpress-dev
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}
+

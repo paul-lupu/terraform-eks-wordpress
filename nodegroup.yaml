@@ -1,0 +1,13 @@
+apiVersion: eksctl.io/v1alpha4
+kind: ClusterConfig
+
+metadata:
+  name: wordpress-eks
+  region: us-west-2
+
+nodeGroups:
+  - name: ng-1-workers
+    labels: { role: workers }
+    instanceType: t2.micro
+    desiredCapacity: 1
+    privateNetworking: true

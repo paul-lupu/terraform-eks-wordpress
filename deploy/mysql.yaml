@@ -1,0 +1,7 @@
+kind: Service
+apiVersion: v1
+metadata: 
+  name: wordpress-db
+spec: 
+  type: ExternalName
+  externalName: db-dev-wordpress.opsworx.net
